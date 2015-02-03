@@ -1,0 +1,146 @@
+/*
+* author: Xu_yn
+*/
+	<style type="text/css">
+		.empity{
+			/*读不出第一个类*/
+		}
+				
+/* 登陆样式 */		
+		*{
+			font: normal Geneva,"宋体",Tahoma,sans-serif;
+			color:#333;
+		}
+		.font{
+			font-weight: 700;
+		}
+		.bg{
+			background-image:url(../image/bg1.jpg);
+			margin: 0;
+			padding: 0;
+			width:100%;
+			height: 100%;
+			overflow:hidden;
+			position:fixed;
+			border:1px #CCCCCC;
+		}
+	/* box样式 */	
+		.box {
+			background-color:rgba(255, 255, 255, 0.36);
+			padding: 40px 40px;
+			border-radius:3px;			
+			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+		}
+		.box_l{	
+			height:180px;			
+			width: 274px;
+			position:absolute;
+			bottom:300px;
+			left:36%;
+		}
+	/* textarea样式 */
+		.txt{
+			display: block;
+			font-size: 14px;		
+			color: #555;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			
+			box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+			transition: border-color ease-in-out .15s , box-shadow ease-in-out .15s;
+		}
+		.txt_l{
+			padding: 6px 12px;
+			width: 91%;
+			height: 24px;
+			margin-bottom:10px;	
+		}
+	/* 确认按钮 */	
+		.btn{
+			min-width: 46px;
+			text-align: center;
+			font-weight: 700;
+			border-radius: 3px;
+			
+			display: block;
+			margin-bottom: 10px;
+			z-index: 1;
+			position: relative;
+
+			border: 1px solid #3079ed;
+			color: #fff;
+			text-shadow: 0 1px rgba(0,0,0,0.1);
+			background-color: #4d90fe;
+		}
+		.btn_l{
+			height: 36px;
+			width: 100%;			
+			font-size: 14px;
+		}
+		
+/* 注册样式，box为跟上面相同 */		
+		.box_r{
+			height:300px;
+			width: 330px;
+			position:absolute;
+			bottom:-400px;
+			left:34%;
+		}
+	/* 每行样式 */
+		.item{
+			display:block;				
+			height: 34px;
+			width:100%;
+			font-size: 16px;
+			margin-bottom: 14px;
+		}	
+	/* 每行左半部分 */
+		.item_1{
+			float: left;
+			text-align: right;
+			width: 90px;
+			padding-right: 8px;			
+			padding-top: 9px;
+		}
+	/* 每行右半部分 */
+		.item_2{
+			height:24px;
+			width:180px;
+			padding: 6px 12px;
+		}
+	/* 上传头像样式 */
+		.item_sc{
+			width:160px;
+			padding: 6px 5px 6px 12px;
+			border:0;
+			float:left;
+		}
+	/* 上传按钮样式 */	
+		.upload{
+			width:26px;
+			height:36px;
+			text-align: center;
+			font-weight: 700;
+			border-radius: 3px;
+			
+			display: block;
+			margin:0 0 0 4px;
+			padding:0;
+			z-index: 1;
+			position: relative;
+			float:left;
+
+			border: 1px solid #999;
+			color: #fff;
+			text-shadow: 0 1px rgba(0,0,0,0.1);
+			background-color:#BBB;
+			
+			cursor:pointer;
+		}
+/* 最下切换 */
+		.ch{
+			cursor:pointer;
+		}
+	</style>
+

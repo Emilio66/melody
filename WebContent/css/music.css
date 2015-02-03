@@ -1,0 +1,374 @@
+/*
+* author: Xu_yn
+*/
+<
+style type ="text /css">.empity {
+	/*读不出第一个类*/
+	
+}
+
+/* 音乐旋转效果jQuery */
+@
+-webkit-keyframes 'rotate ' {from {
+	-webkit-transform: rotate(0deg);
+	-webkit-border-radius: 2px;
+}
+
+to {
+	-webkit-transform: rotate(360deg);
+	-webkit-border-radius: 25px;
+}
+
+}
+/* 整个页面布局 */
+#page {
+	background: url(../image/bg1.jpg);
+	overflow: hidden;
+}
+/* 背景切换 */
+.rBg {
+	width: 14px;
+	height: 14px;
+	display: block;
+	opacity: 0.9;
+	outline: none;
+	float: left;
+	margin-left: 4px;
+	cursor: pointer;
+}
+/* 整个页面box */
+.box1 {
+	padding: 90px;
+	margin: 0;
+	display: block;
+	height: 450px;
+	width:1340px;
+	position: absolute;
+	top: 20px;
+}
+
+/* 右边页 */
+.box2 {
+	padding: 90px 0px;
+	margin: 0;
+	display: block;
+	height: 450px;
+	width: 1100px;
+	position: absolute;
+	top: 20px;
+	right: -1200px;
+}
+/* 更加右边的页 */
+.box3 {
+	padding: 90px 0px;
+	margin: 0;
+	display: block;
+	height: 450px;
+	width: 1366px;
+	position: absolute;
+	top: 20px;
+	left: 2400px;
+}
+/* 最上注销部分 */
+.top_right {
+	position: fixed;
+	right: 30px;
+	top: 20px;
+	width: 240px;
+	height: 80px;
+}
+.top_middle {
+	position: absolute;
+	right: 30%;
+	top: 10px;
+	width: 500px;
+	height: 60px;
+}
+
+/* 注销按钮 */
+.top_right_logout {
+	float: right;
+	padding: 6px 30px 0 0;
+	width: 60px;
+	height: 36px;
+	cursor: pointer;
+}
+/* 用户名 */
+.top_right_y {
+	color: white;
+	float: right;
+	margin-bottom: 0px;
+	marging-left: 5px;
+	width: 80px;
+	height: 23px;
+}
+.top_right_user {
+	float: left;
+	margin-bottom: 0px;
+	marging-left: 30px;
+	width: 80px;
+	height: 80px;
+}
+/* 头像 */
+.top_right_t {
+	float: auto;
+	width: 40px;
+	height: 40px;
+	margin-left:auto;
+	margin-top: auto;
+	border-radius: 4px;
+}
+.top_right_message {
+	float: left;
+	width: 95px;
+	height: 80px;
+	margin-left:0;
+	margin-top: auto;
+}
+/* 左侧 */
+.left {
+	width: 300px;
+	height: 500px;
+	float: left;
+}
+/* 中间部分 */
+.middle {
+	width: 360px;
+	padding: 50px 60px 50px 60px;
+	float: left;
+}
+/* 转动record样式 */
+.record {
+	width: 300px;
+	height: 300px;
+	background-image: url(../image/record.PNG);
+	-webkit-animation: rotate 9.5s infinite linear;
+	-webkit-animation-play-state: running;
+}
+
+/* 音乐播放+下一曲 */
+.cont {
+	padding: 30px 0px;
+	text-align: center;
+}
+
+.bt {
+	width: 30px;
+	cursor: pointer;
+}
+
+/* 中间：现在播放 */
+.nowplay {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.fontsty {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 16px;
+	color: rgba(255, 255, 255, 0.89);
+}
+/* 评分 */
+.my_point_box {
+	width: 300px;
+	height: 40px;
+	padding-left: 40px;
+}
+/* 用户自己的乐评 */
+.my_point_txt {
+	width: 260px;
+	height: 160px;
+	margin-top: 10px;
+	margin-bottom: 16px;
+	padding: 10px;
+	color: #FFF;
+	border: 0;
+	border-radius: 6px;
+	background-color: rgba(36, 36, 36, 0.7);
+}
+/* 星级评价 */
+.starbox {
+	width: 170px;
+	height: 36px;
+	margin: 0;
+	float: left;
+}
+/* 星星list样式 */
+.starbox_list {
+	list-style-type: none;
+	width: 100%;
+	height: 40px;
+	margin: 0;
+	padding: 0;
+}
+/* 每颗星 */
+.star {
+	float: left;
+	background: url(../image/star-4.png);
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+/* 确认评价 */
+.btn {
+	width: 46px;
+	height: 36px;
+	text-align: center;
+	font-weight: 700;
+	border-radius: 3px;
+	display: block;
+	margin: 0 0 10px 20px;
+	z-index: 1;
+	position: relative;
+	border: 1px solid #3079ed;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+	background-color: #4d90fe;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+/* 右部对话框 */
+.right1 {
+	width: 280px;
+	height: 420px;
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	float: left;
+}
+
+/*乐评*/
+.right2 {
+	width: 280px;
+	height: 420px;
+	margin-right= 166px;
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	float: right;
+}
+/* 乐评headline */
+.right_header {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	position: relative;
+	z-index: 100;
+}
+/* 乐评txt */
+.right_top_txt {
+	height: 45px;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background: linear-gradient(#555, #222);
+	border-radius: 6px 6px 0 0;
+	text-align: center;
+	color: #FFF;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.right_main {
+	width: 270px;
+	height: 370px;
+	padding: 5px;
+	float: right;
+	overflow: auto;
+}
+.right_main1{
+	width: 260px;
+	height: 410px;
+	padding: 10px;
+	overflow: scroll;
+}
+.right_main2 {
+	width: 370px;
+	height: 370px;
+	padding: 5px;
+	float: right;
+	overflow: auto;
+}
+/* dot 部分 */
+.dot_box {
+	width: 400px;
+	height: 30px;
+	left: 40%;
+	bottom: 30px;
+	position: absolute;
+}
+/* 两个页面按钮 */
+.rBtns {
+	background: #000;
+	width: 76px;
+	height: 22px;
+	font-size: 11px;
+	text-align: center;
+	color: #fff;
+	display: block;
+	margin-bottom: 5px;
+	border-radius: 20px;
+	line-height: 23px;
+	opacity: 0.7;
+	outline: none;
+	text-decoration: none;
+	float: left;
+	margin-left: 20px;
+}
+
+.rBtns:hover {
+	background: #C00;
+}
+
+.box2_2 {
+	margin-left: 200px;
+}
+
+.right1_box2_2 {
+	width: 380px;
+	height: 420px;
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	float: left;
+	margin-left: 200px;
+}
+
+.box3_1 {
+	margin-left: 200px;
+}
+
+.search1 {
+	left: 20%;
+	right: 75%;
+	border-radius: 10px;
+	float: left;
+	background-color: rgba(255, 255, 255, 0.4);
+	padding: 0;
+}
+
+.search_main {
+	width: 260px;
+	height: 355px;
+	padding: 10px;
+}
+
+.serach_btn {
+	width: 46px;
+	height: 20px;
+	right: 70%;
+	margin-left: 260px;
+	text-align: center;
+	font-weight: 700;
+	border-radius: 3px;
+	display: block;
+	z-index: 1;
+	border: 2px solid #3079ed;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+	background-color: #4d90fe;
+	font-size: 12px;
+	cursor: pointer;
+}
+</style>

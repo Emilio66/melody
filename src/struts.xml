@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!-- 	<constant name="struts.action.extension" value="do"></constant> -->
+	<constant name="struts.serve.static.browserCache" value="false"></constant> <!-- 浏览器是否缓存 -->
+	<constant name="struts.devMode" value="true"></constant> <!-- 开发者模式 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant> <!-- xml是否重新载入 -->
+	<!-- <constant name="struts.custom.i18n.resources" value="mess"></constant> --> <!-- 国际化 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> <!-- 编码风格 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant> <!-- 允许动态调用 -->
+	
+	<package name="melody" namespace="/" extends="struts-default">
+		
+		 <!-- 添加拦截器 -->  
+        <interceptors>  
+            <!-- 添加登陆拦截器 -->  
+            <interceptor name="loginValidate" class="org.melody.controller.SecurityFilter"/>  
+            <!-- 新建一个站，把登陆拦截器和默认的站放进去 -->  
+            <interceptor-stack name="mystack">  
+                <interceptor-ref name="defaultStack"/>  
+                <interceptor-ref name="loginValidate"/>  
+            </interceptor-stack>  
+        </interceptors>  
+          
+        <!-- 修改默认拦截器 -->  
+        <default-interceptor-ref name="mystack"/> 
+		
+		<default-action-ref name="login"/>  <!-- 指定默认action -->	
+		
+		<global-results>  
+            <result name="login" type="redirectAction">  
+                <param name="actionName">login</param>  
+                <param name="namespace">/</param>   
+            </result>  
+        </global-results>
+		
+		<action name="login" class="org.melody.controller.LoginAction" >
+			<result name="login">/WEB-INF/page/login.jsp </result>
+			<!-- <result name="success">/WEB-INF/page/index.jsp</result>	 -->
+			<result name="success" type="chain">
+				<param name="actionName">main_init</param> <!--  登陆验证成功，初始化主页 -->
+			</result>	
+		</action>
+		
+		<action name="initRegister" class="org.melody.controller.InitRegisterAction" >
+			<result name="error">/WEB-INF/page/login.jsp </result>
+			<result name="success">/WEB-INF/page/register.jsp</result>	
+		</action>
+		
+		<action name="register" class="org.melody.controller.RegisterAction">
+			<param name="allowTypes">image/jpeg,image/png,image/gif,image/bmp</param><!-- 上传照片类型 -->
+			<param name="savePath">/image</param>
+			<param name="defaultImage">default.jpg</param>
+			<param name="maxSize">10000000</param><!-- 上传照片最大为10M -->
+			<result name="error">/WEB-INF/page/login.jsp</result>
+			<result name="input">/WEB-INF/page/login.jsp</result>
+			<result name="success" type="chain">
+				<param name="actionName">main_init</param>	 <!-- 登陆验证成功，初始化主页 -->
+			</result>		
+		</action>
+		
+		<action name="main_init" class="org.melody.controller.MainAction" method="init">
+			<result name="error">/WEB-INF/page/error.jsp</result>
+			<result name="success">/WEB-INF/page/index.jsp</result>	
+		</action>		
+		<action name="main" class="org.melody.controller.MainAction">
+			<result name="error">/WEB-INF/page/error.jsp</result>
+			<result name="success">/WEB-INF/page/index.jsp</result>	
+		</action>
+		
+		<action name="favorite" class="org.melody.controller.FavoriteAction">
+			<result name="success">/WEB-INF/page/favorite.jsp</result>
+		</action>
+		
+		<action name="friend_*" class="org.melody.controller.FriendAction" method="{1}">
+			<result name="success">/WEB-INF/page/friend.jsp</result>
+			<result name="add">/WEB-INF/page/addFriend.jsp</result>
+		</action>
+		
+		<action name="message_*" class="org.melody.controller.MessageAction" method="{1}">
+			<result name="success">/WEB-INF/page/messageList.jsp</result>
+		</action>
+		
+		<action name="logout" class="org.melody.controller.LogoutAction">
+			<result name="success">/WEB-INF/page/login.jsp</result>
+		</action>
+	<!-- 		
+		<action name="default" >
+			<result name="success">/WEB-INF/page/login.jsp</result>
+			<result name="error">/WEB-INF/page/error.jsp</result>
+		</action> -->
+		
+	</package>
+	
+	
+	<package name="ajax" namespace="/ajax" extends="json-default">
+		<action name="main_*" class="org.melody.controller.MainAction" method="{1}">
+			<result type="json">
+				<param name="noCache">true</param>
+			</result>
+		</action>
+		<action name="initRegister" class="org.melody.controller.InitRegisterAction" >
+			<result type="json">
+				<param name="noCache">true</param>
+			</result>
+		</action>
+		<action name="friend_*" class="org.melody.controller.FriendAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+				<param name="noCache">true</param>
+			</result>
+		</action>
+		<action name="message_unreadCount" class="org.melody.controller.MessageAction" method="unreadCount">
+			<result type="json">
+				<param name="root">count</param>
+				<param name="noCache">true</param>
+			</result>
+		</action>
+		<action name="message_chat" class="org.melody.controller.MessageAction" method="getHistory">
+			<result type="json">
+				<param name="root">messageList</param>
+				<param name="noCache">true</param>
+			</result>
+		</action>
+		<action name="message_unread" class="org.melody.controller.MessageAction" method="getUnreadMessage">
+			<result type="json">
+				<param name="root">messageList</param>
+				<param name="noCache">true</param>
+			</result>
+		</action>
+		<action name="message_read" class="org.melody.controller.MessageAction" method="markAsRead">
+			<result type="json">
+				<param name="noCache">true</param>
+			</result>
+		</action>
+	</package>
+</struts>
